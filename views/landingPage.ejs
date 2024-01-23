@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/icons/pics.png">
+    <title>Vakil Vartha</title>
+    <link rel="stylesheet" href="landingPage.css">
+    <script>
+        function navigateToSelected() {
+            var dropdown = document.getElementById("mydropdown");
+            var selectedOption = dropdown.options[dropdown.selectedIndex];
+
+            if (selectedOption.value) {
+                window.location.href = selectedOption.value;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <img src="/landingPageIcons/vv1.png" alt="Logo">
+        </div>
+        <div class="nav-buttons">
+            <button class="nb">About Us</button>
+            <button class="nb">Contact Us</button>
+
+            <select id="mydropdown" class="custom-dropdown" onchange="navigateToSelected()">
+                <option value="" disabled selected>Join now</option>
+                <option value="/ecourt/regLawyer">Lawyer</option>
+                <option value="/ecourt/regClient">Client</option>
+            </select>
+        </div>
+    </div>
+    <div class="dp">
+
+        <div class="bg">
+            <h1 id="st">Streamline Your Legal Journey</h1>
+            <h3 id="co">Connect with top lawyers and manage court cases effectively via our comprehensive e-portal</h3>
+        </div>
+
+    </div>
+
+    <div class="features">
+        <div class="feature" id="badge">
+            <img src="/landingPageIcons/badge.png" alt="Badge Image">
+            <h2>User-friendly interface</h2>
+        </div>
+        <div class="feature" id="star">
+            <img src="/landingPageIcons/star.png" alt="Star Image">
+            <h2>Efficient case management</h2>
+        </div>
+        <div class="feature" id="up">
+            <img src="/landingPageIcons/up.png" alt="Up Image">
+            <h2>Seamless lawyer-client communication</h2>
+        </div>
+    </div>
+    <div id="au">
+        <h1>ABOUT US</h1>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to Vakil Varta, your ultimate e-portal for efficient court case management. Based in Hyderabad, our platform provides a seamless experience for both lawyers and clients. With dedicated interfaces for lawyers and clients, lawyers can easily update their information while clients can choose from a wide range of lawyers to contact. Additionally, our platform ensures the smooth maintenance of case records once a case is accepted by a lawyer. Trust Vakil Varta to streamline your court case management process.
+                <br>
+            At Vakil Varta, we understand the importance of efficient and reliable legal services. Our user-friendly platform is designed to simplify the connection between lawyers and clients, making it easier for clients to find the right legal representation and for lawyers to manage their cases effectively. With our comprehensive features and commitment to excellence, we strive to be the go-to e-portal for all your court case management needs. Join Vakil Varta today and experience the future of legal services.</p>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Vakil Varta. All Rights Reserved.</p>
+            <p>Contact us:</p>
+            <ul>
+                <li><a href="#" target="_blank">Instagram</a></li>
+                <li><a href="#" target="_blank">Facebook</a></li>
+                <li>Phone: +91 9494-517360</li>
+                <li>Location: Hyderabad</li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+</html>

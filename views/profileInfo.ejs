@@ -1,0 +1,33 @@
+<!-- views/profileInfo.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Info</title>
+    <style>
+        *{
+            margin-left: 10px;
+        }
+        .profile{
+            background-color: aliceblue;
+            padding: 20px;
+            border-radius: 16px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lawyers Info!</h1>
+    <%for (let profile of profiles){%>
+        <div class="profile">
+            <h3>Name: <%= profile.name %></h3>
+            <h5>Phone No: <%= profile.phoneNo %></h5>
+            <form action="/ecourt/lawyer/<%=profile.name%>" method="get">
+                <button>More Details</button>
+            </form>
+        </div>
+        <br><br>
+    <%}%>
+</body>
+</html>
