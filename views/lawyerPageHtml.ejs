@@ -50,7 +50,7 @@
 				<p>&nbsp;&nbsp;&nbsp;
 					search
 				</p>
-				<form action="/ecourt/filterLawyers" method="post">
+				<form action="/ecourt/filterLawyers/<%= clientId %>" method="post">
 					<div class="fields">
 
 						<label for="city"></label>
@@ -144,9 +144,12 @@
 								<p><%= lawyers.practiceAreas %></p>
 							</div>
 						  </section>
-						  <button>
-							  <a href="#" >CONTACT NOW</a>
-						  </button>
+						  <form action="/ecourt/findalawyer/<%=clientId%>/<%=lawyers._id %>" method="post" id="contact">
+							<button id="contact">CONTACT NOW</button>
+							</form>
+						  <!-- <button>
+							  <a href="/ecourt/findalawyer/<%=clientId%>/<%=lawyers.id %>" >CONTACT NOW</a>
+						  </button> -->
 					</div>
 				</div>
 			<%}%>

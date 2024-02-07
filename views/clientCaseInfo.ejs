@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/clientCaseInfo.css">
+</head>
+<body>
+    
+    <h2 class="heading">My Cases</h2>
+
+    <div class="client-details">
+        <h3>Client Details</h3><br>
+        <div class="detail">
+            <label for="name">Name:</label>
+            <span id="name"><%= client.name %></span>
+        </div>
+        <div class="detail">
+            <label for="email">Email:</label>
+            <span id="email"><%= client.email %></span>
+        </div>
+        <div class="detail">
+            <label for="address">Address:</label>
+            <span id="address">123 Main St, City</span>
+        </div>
+        <div class="detail">
+            <label for="occupation">Occupation:</label>
+            <span id="occupation">Engineer</span>
+        </div>
+        <div class="detail">
+            <label for="gender">Gender:</label>
+            <span id="gender">Male</span>
+        </div>
+        <div class="detail">
+            <label for="emergency-contact">Emergency Contact:</label>
+            <span id="emergency-contact">Jane Doe - 9876543210</span>
+        </div>
+    </div>
+
+    <div class="cases">
+        <h3>Cases</h3>
+        <div class="case-details">
+            <% client.cases.forEach((clientCase, index) => { %>
+                <div class="case">
+                    <h4>Case <%= index + 1 %></h4>
+                    <div class="detail">
+                        <label for="case-description">Case Description:</label>
+                        <span id="case-description"><%= clientCase.caseDescription %></span>
+                    </div>
+                    <div class="detail">
+                        <label for="legal-history">Legal History:</label>
+                        <span id="legal-history"><%= clientCase.legalHistory %></span>
+                    </div>
+                    <div class="detail">
+                        <label for="additional-comments">Additional Comments:</label>
+                        <span id="additional-comments"><%= clientCase.additionalComments %></span>
+                    </div>
+                    <div class="detail">
+                        <label for="lawyer-assigned">Status</label>
+                        <span id="lawyer-assigned"><%= clientCase.status %></span>
+                    </div>
+                    
+                    <div class="detail">
+                        <label for="related-documents">Related Documents:</label>
+                        <ul id="related-documents">
+                            <% clientCase.relatedDocuments.forEach((document, documentIndex) => { %>
+                                
+                                <% if (!document.data) { %>
+                                    <li>
+                                        <div class="detail">
+                                            <%= document.description %>
+                                        </div>
+                                        <div class="detail">
+                                            <form action="/ecourt/ccaseinfo/<%= client._id %>/<%= clientCase._id %>/<%= document.description %>" method="post" enctype="multipart/form-data">
+                                                <input type="file" name="new-document">
+                                                <button type="submit">Upload</button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                    <% } else { %>
+                                        <li>
+                                            <div class="detail">
+                                                <!-- Display the document description -->
+                                                <%= document.description %>
+                                            </div>
+                                            <div class="detail">
+                                                <!-- Display a link to download the document -->
+                                                <a href="/ecourt/ccaseinfo/<%= client._id %>/<%= clientCase._id %>/<%= document.description %>/view">Open File</a>
+                                            </div>
+                                        </li>
+                                    <% } %>
+
+                            <% }); %>
+                        </ul>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+</body>
+</html>

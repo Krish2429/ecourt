@@ -13,14 +13,25 @@ const clientSchema = new mongoose.Schema({
     },
     contact: {
         type: String,
+        required: true
     },
-    dateOfBirth: {
-        type: String,
-    },
+    dateOfBirth: String,
     password: {
         type: String,
         required: true
-    }
+    },
+    cases: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Case'
+    }],
+    pendingRequests: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Case'
+    }],
+    acceptedRequests: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Case'
+    }]
 });
 
 const Client = mongoose.model("Client", clientSchema);

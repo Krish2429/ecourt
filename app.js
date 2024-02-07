@@ -18,6 +18,7 @@ const dashboardRoutes = require('./routes/dashboardRoutes.js');
 // Middleware to handle data parsing
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
 
 app.use(methodOverride("_method"));
 

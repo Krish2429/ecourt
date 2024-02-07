@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Details Form</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-field {
+  width: calc(100% - 5%);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.textarea-field {
+  width: calc(100% - 5%);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allow vertical resizing */
+  overflow-y: scroll; /* Display scroll bar if content exceeds height */
+  height: 100px; /* Set initial height */
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Case Details Form</h2>
+  <form action="/ecourt/ccase/<%= client._id %>" method="post">
+    <div class="form-group">
+      <label for="name" class="label">Full Name:</label>
+      <input type="text" id="name" name="name" class="input-field" required readonly value="<%= client.name%>">
+    </div>
+    <div class="form-group">
+      <label for="email" class="label">Email Address:</label>
+      <input type="email" id="email" name="email" class="input-field" required readonly value="<%= client.email%>">
+    </div>
+    <div class="form-group">
+      <label for="phone" class="label">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" class="input-field" required readonly value="<%= client.contact%>">
+    </div>
+    <div class="form-group">
+      <label for="address" class="label">Address:</label>
+      <input type="text" id="address" name="address" class="input-field">
+    </div>
+    <div class="form-group">
+      <label for="dob" class="label">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" class="input-field">
+    </div>
+    <div class="form-group">
+      <label for="occupation" class="label">Occupation:</label>
+      <input type="text" id="occupation" name="occupation" class="input-field">
+    </div>
+    <div class="form-group">
+      <label for="gender" class="label">Gender:</label>
+      <select id="gender" name="gender" class="input-field">
+        <option value="" selected>Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="emergency-contact" class="label">Emergency Contact:</label>
+      <input type="text" id="emergency-contact" name="emergency-contact" class="input-field">
+    </div>
+    <div class="form-group">
+      <label for="legal-history" class="label">Legal History:</label>
+      <textarea id="legal-history" name="legal-history" class="textarea-field"></textarea>
+    </div>
+    <!-- <div class="form-group">
+      <label for="related-documents" class="label">Related Documents:</label>
+      <input type="file" id="related-documents" name="related-documents" class="input-field">
+    </div> -->
+    <div class="form-group">
+      <label for="case-description" class="label">Case Description:</label>
+      <textarea id="case-description" name="case-description" class="textarea-field"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="additional-comments" class="label">Additional Comments:</label>
+      <textarea id="additional-comments" name="additional-comments" class="textarea-field"></textarea>
+    </div>
+    <button type="submit" class="button">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>

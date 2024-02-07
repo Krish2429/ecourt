@@ -48,14 +48,26 @@ const lawyerSchema = new mongoose.Schema({
         required: true,
         // minlength: [50, "Please shorten the length"]
     },
+    about: {
+        type: String,
+        required: true
+    },
     password: {
         type: String,
         required: true
     },
     img: {
-        type: String,
-        // required: true,
-    }
+        data: Buffer,
+        contentType: String
+    },
+    acceptedCases: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Case'
+    }],
+    requestedCases: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Case' // Reference to the 'Case' model
+    }]
 });
 
 const Lawyer = mongoose.model("Lawyer", lawyerSchema);

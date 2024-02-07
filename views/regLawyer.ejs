@@ -14,7 +14,7 @@
   <article class="card-body mx-auto" style="max-width: 400px;">
     <img class="d-block mx-auto mb-4 title-icon" src="/icons/pics.png" alt="" width="125" height="125" style="border-radius: 2rem;">
     <h4 class="card-title mt-3 text-center">Create Lawyer Account</h4>
-    <form class="" action="/ecourt/regLawyer" method="post">
+    <form class="" action="/ecourt/regLawyer" method="post" enctype="multipart/form-data">
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -118,6 +118,13 @@
         <textarea name="lAddress" class="form-control" placeholder="Address" rows="1" ></textarea>
       </div> <!-- form-group// -->
 
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fa fa fa-building"></i> </span>
+        </div>
+        <textarea name="lAbout" class="form-control" placeholder="About" rows="1" ></textarea>
+      </div> <!-- form-group// -->
+
 
 
       <div class="form-group input-group">
@@ -159,7 +166,7 @@
   </form>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="/uploadImage.js"></script>
+  <script src="/uploadImage.js"></script> 
 <script src="\regStaff.js"></script>
   <!-- <script>
     function myFunction() {
