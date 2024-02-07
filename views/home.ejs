@@ -1,0 +1,137 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+	<meta charset="UTF-8"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/icons/pics.png"> 
+	<title>Vakil Vartha</title> 
+	<link rel="stylesheet" href="/homeStyle.css">
+	<link rel="stylesheet" href="/responsive.css">
+
+</head> 
+
+<body> 
+	
+	<!-- for header part -->
+	<header> 
+
+		<div class="logosec">
+            <img src="/icons/pics.png" alt="Your Logo" class="logo-img">
+			<img src= "/icons/menu.png" class="icn menuicn" id="menuicn" alt="menu-icon"> 
+		</div> 
+
+		<div class="searchbar"> 
+			<input type="text"
+				placeholder="Search"> 
+			<div class="searchbtn"> 
+			<img src= "/icons/search.png" class="icn srchicn" alt="search-icon"> 
+			</div> 
+		</div> 
+
+		<div class="message"> 
+			<div class="circle"></div> 
+			<img src= "/icons/notification.png" class="icn" alt=""> 
+			<div class="dp"> 
+
+			<img src= "/icons/profile.png" class="dpicn" alt="dp"> 
+			</div> 
+		</div> 
+
+	</header> 
+
+	<div class="main-container"> 
+		<div class="navcontainer"> 
+			<nav class="nav"> 
+				<div class="nav-upper-options"> 
+					<div class="nav-option option1"> 
+						<img src= "/icons/dashboard.png"  class="nav-img" alt="dashboard"> 
+						<h3> Dashboard</h3> 
+					</div> 
+
+					<!-- <div class="option2 nav-option"> 
+						<img src= "/icons/ipcSections.png" class="nav-img" alt="IPC Sections"> 
+						<h3> IPC Sections</h3> 
+					</div>  -->
+
+					<a href="http://localhost:8080/ecourt/ipcsections"  class="nav-option option2">
+						<img src="/icons/ipcSections.png" class="nav-img" alt="IPC Sections">
+						<h3> IPC Sections</h3>
+					</a>
+
+					<a href="http://localhost:8080/ecourt/findalawyer/<%= client._id %>" id="findALawyerOption" class="nav-option option3">
+						<img src="/icons/findalawyer.png" class="nav-img" alt="findalawyer">
+						<h3> Find a lawyer</h3>
+					</a>
+					
+					<a href="http://localhost:8080/ecourt/ccaseinfo/<%= client._id %>"  class="nav-option option4">
+						<img src="/icons/legalAdvice.png" class="nav-img" alt="My Cases">
+						<h3> My Cases</h3>
+					</a>
+
+					<a href="http://localhost:8080/ecourt/ccase/<%= client._id %>"  class="nav-option option5">
+						<img src="/icons/profileDashboard.png" class="nav-img" alt="File a case">
+						<h3> File a case</h3>
+					</a>
+
+
+					<div class="nav-option option6"> 
+						<img src= "/icons/settings.png" class="nav-img" alt="settings"> 
+						<h3> Settings</h3> 
+					</div> 
+
+					<div class="nav-option logout"> 
+						<img src= "/icons/logout.png" class="nav-img" alt="logout"> 
+						<h3>Logout</h3> 
+					</div> 
+
+				</div> 
+			</nav> 
+		</div> 
+		<div class="main"> 
+
+			<div class="searchbar2"> 
+				<input type="text"
+					name=""
+					id=""
+					placeholder="Search"> 
+				<div class="searchbtn"> 
+				<img src= "/icons/search.png" class="icn srchicn" alt="search-button"> 
+				</div> 
+			</div> 
+
+			<div class="banner">
+				<h1>Free Legal Advice Online From Top Rated Lawyers</h1>
+				<p>Choose from over 10,000 lawyers across 700+ cities in India</p>
+				<div class="buttons">
+					<button class="talk-to-lawyer"><h4>TALK TO A LAWYER</h4></button>
+					<button class="ask-question">ASK A FREE QUESTION</button>
+				</div>
+			</div><br><br><br>
+
+			<h2>Client Cases</h2>
+			<div class="case-details">
+				<% if (client.cases.length > 0) { %>
+					<ul class="case-list">
+						<% client.cases.forEach(clientCase => { %>
+							<li class="case-item">
+								<div class="case-info">
+									<p class="case-description">Case Description: <%= clientCase.caseDescription %></p>
+									<!-- Add more case details here -->
+								</div>
+							</li>
+						<% }); %>
+					</ul>
+				<% } else { %>
+					<p>No cases found.</p>
+				<% } %>
+			</div>
+
+			
+		</div> 
+	</div> 
+
+	<script src="/home.js"></script> 
+</body> 
+</html>

@@ -1,0 +1,207 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+void placeOrder(const char* restaurantName, const char* items[], const int prices[], int itemCount)
+{
+    printf("____________________________________________________________\n");
+    printf("List of items in %s are:\n", restaurantName);
+    printf("        Item           Price\n");
+
+    for (int i = 0; i < itemCount; i++)
+    {
+        printf("%d. %s\t\t--->\t%d\n", i + 1, items[i], prices[i]);
+    }
+
+    int choice, quantity, cost = 0;
+    char check;
+
+    do
+    {
+        printf("Enter your choice to order:");
+        scanf("%d", &choice);
+        printf("Enter Quantity:");
+        scanf("%d", &quantity);
+
+        if (choice >= 1 && choice <= itemCount)
+        {
+            cost += prices[choice - 1] * quantity;
+        }
+        fflush(stdin);
+
+        printf("To order more, press 1; otherwise, press Enter:");
+        scanf(" %c", &check);
+
+    } while (check == '1');
+
+    FILE* orderFile = fopen("order.txt", "a");
+    if (orderFile == NULL)
+    {
+        printf("Error opening order file.\n");
+        return;
+    }
+
+    fprintf(orderFile, "Restaurant: %s\n", restaurantName);
+    fprintf(orderFile, "Items Ordered:\n");
+    for (int i = 0; i < itemCount; i++)
+    {
+        fprintf(orderFile, "%s - %d\n", items[i], prices[i]);
+    }
+    fprintf(orderFile, "Total Cost: %d\n\n", cost);
+
+    fclose(orderFile);
+
+    printf("\nOrder has been placed!!!\nTotal Cost = %d\n\n", cost);
+}
+
+void lbnagar()
+{
+    printf("____________________________________________________________\n");
+    printf("\nList of Restaurants available in L.B Nagar are:\n");
+    printf("1. McDonald's\n");
+    printf("2. KFC\n");
+
+    int res_ch; // restaurant choice
+    printf("Choose a restaurant:");
+    scanf("%d", &res_ch);
+
+    if (res_ch == 1)
+    {
+        const char* items[] = {"French fries", "Chicken Burger", "Veg Burger", "Pizza"};
+        int prices[] = {49, 149, 99, 199};
+        int itemCount = sizeof(items) / sizeof(items[0]);
+
+        placeOrder("McDonald's", items, prices, itemCount);
+        sleep(5);
+        printf("----------------------------------------\n\n");
+    }
+    else if (res_ch == 2)
+    {
+        const char* items[] = {"Wednesday bucket", "Chicken Burger", "Chicken Briyani"};
+        int prices[] = {649, 129, 299};
+        int itemCount = sizeof(items) / sizeof(items[0]);
+
+        placeOrder("KFC", items, prices, itemCount);
+        sleep(5);
+        printf("----------------------------------------\n\n");
+    }
+    else
+    {
+        printf("Invalid choice.\n");
+    }
+}
+
+void uppal()
+{
+    printf("____________________________________________________________\n");
+    printf("\nList of Restaurants available in Uppal are:\n");
+    printf("1. Pista House\n");
+    printf("2. Santosh Dhaba\n");
+
+    int res_ch; // restaurant choice
+    printf("Choose a restaurant:");
+    scanf("%d", &res_ch);
+
+    if (res_ch == 1)
+    {
+        const char* items[] = {"Veg Biryani", "Chicken Biryani", "Mutton Briyani"};
+        int prices[] = {199, 249, 350};
+        int itemCount = sizeof(items) / sizeof(items[0]);
+
+        placeOrder("Pista House", items, prices, itemCount);
+        sleep(5);
+        printf("----------------------------------------\n\n");
+    }
+    else if (res_ch == 2)
+    {
+        const char* items[] = {"Veg Biryani", "Chicken Biryani", "Mutton Briyani"};
+        int prices[] = {149, 199, 149};
+        int itemCount = sizeof(items) / sizeof(items[0]);
+
+        placeOrder("Santosh Dhaba", items, prices, itemCount);
+        sleep(5);
+        printf("----------------------------------------\n\n");
+    }
+    else
+    {
+        printf("Invalid choice.\n");
+    }
+}
+
+void dilsukhnagar()
+{
+    printf("____________________________________________________________\n");
+    printf("\nList of Restaurants available in Dilsukhnagar are:\n");
+    printf("1. Spicy Hub\n");
+    printf("2. Al Mandi\n");
+
+    int res_ch; // restaurant choice
+    printf("Choose a restaurant:");
+    scanf("%d", &res_ch);
+
+    if (res_ch == 1)
+    {
+        const char* items[] = {"Chicken Biryani", "Mutton Briyani"};
+        int prices[] = {249, 349};
+        int itemCount = sizeof(items) / sizeof(items[0]);
+
+        placeOrder("Dilsukhnagar Spicy Hub", items, prices, itemCount);
+        sleep(5);
+        printf("----------------------------------------\n\n");
+    }
+    else if (res_ch == 2)
+    {
+        const char* items[] = {"Chicken Mandi", "Mutton leg mandi", "Mutton Fried mandi"};
+        int prices[] = {399, 799, 899};
+        int itemCount = sizeof(items) / sizeof(items[0]);
+
+        placeOrder("Dilsukhnagar Al Mandi", items, prices, itemCount);
+        sleep(5);
+        printf("----------------------------------------\n\n");
+    }
+    else
+    {
+        printf("Invalid choice.\n");
+    }
+}
+
+int main()
+{
+    printf("\n\t\t-----------------\n");
+    printf("\t\tWELCOME TO SWIGGY\n");
+    printf("\t\t-----------------\n\n\n");
+    char x; // for reorder or exit
+
+    do
+    {
+        printf("List of places:\n\n1. L.B nagar\n2. Uppal\n3. Dilsukhnagar\n");
+        printf("Choose the nearest Location:");
+        int ch;
+        scanf("%d", &ch);
+
+        switch (ch)
+        {
+        case 1:
+            lbnagar();
+            break;
+        case 2:
+            uppal();
+            break;
+        case 3:
+            dilsukhnagar();
+            break;
+        default:
+            printf("Dear user, please choose a valid location.\n");
+            break;
+        }
+
+        printf("Do you want to order more? Press 1.\nTo quit, press Enter:");
+        fflush(stdin);
+        scanf(" %c", &x);
+
+    } while (x == '1');
+
+    printf("\t\tThank you\n");
+
+    return 0;
+}

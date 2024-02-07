@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/icons/pics.png">
+    <title>Vakil Vartha</title>
+    <link rel="stylesheet" href="/clientRequestl.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script>
+        // JavaScript code to set the selected case ID in the hidden input field
+        document.addEventListener("DOMContentLoaded", function() {
+        var caseDropdown = document.getElementById("caseDropdown");
+        var selectedCaseIdInput = document.getElementById("selectedCaseId");
+
+        caseDropdown.addEventListener("change", function() {
+            var selectedOption = caseDropdown.options[caseDropdown.selectedIndex];
+            selectedCaseIdInput.value = selectedOption.value;
+        });
+});
+
+    </script>
+</head>
+<body>
+    <header> 
+
+		<div class="logosec">
+            <img src="/icons/pics.png" alt="Your Logo" class="logo-img">
+		</div> 
+
+		<div class="searchbar"> 
+			<input type="text"
+				placeholder="Search"> 
+			<div class="searchbtn"> 
+			<img src= "/icons/search.png" class="icn srchicn" alt="search-icon"> 
+			</div> 
+		</div> 
+
+		<div class="message"> 
+			<div class="circle"></div> 
+			<div class="dp"> 
+
+			<img src= "/icons/profile.png" class="dpicn" alt="dp"> 
+			</div> 
+		</div> 
+
+	</header> 
+    <form action="/ecourt/send-request/<%= client._id %>/<%= lawyer._id %>" method="post">
+    <div class="lawyerprofile">
+        <img id="lawyer-img" src="/advocate.jpg" alt="Lawyer Image">
+        <div class="profile-details">
+            <div id="name"><b>Name: </b><%= lawyer.name %></div>
+            <div id="email"><b>Email: </b><%= lawyer.email %></div>
+            <div id="contact"><b>Contact: </b><%= lawyer.contact %></div>
+            <div id="city"><b>City: </b><%= lawyer.city %></div>
+            <div id="practice-areas"><b>Practice Areas: </b><%= lawyer.practiceAreas %></div>
+            <div id="experience"><b>Experience: </b><%= lawyer.experience %></div>
+        </div>
+    </div>
+    <div class="body">
+        <h3>ABOUT ME</h3>
+        <p><%= lawyer.about %></p>
+    </div>
+    <!-- Within the <form> element -->
+    <input type="hidden" id="selectedCaseId" name="selectedCaseId">
+
+    <div class="body">
+        <h4>Select a Case:</h4>
+        <div class="case-details">
+            <label for="caseDropdown"></label>
+            <select id="caseDropdown" class="custom-dropdown">
+                <option value="null">Choose</option>
+                <% if (client.cases.length > 0) { %>
+                    <% client.cases.forEach(clientCase => { %>
+                        <% if(!(clientCase.status).includes("assigned") ){ %>
+                            <option value="<%= clientCase._id %>"><%= clientCase.caseDescription %></option>
+                        <%}%>
+                    <% }); %>
+                <% } else { %>
+                    <option disabled>No cases found</option>
+                <% } %>
+            </select>
+            <div id="caseInfo"></div>
+        </div>
+    </div>
+    <div class="req">
+        <button class="request">REQUEST THE LAWYER</button>
+    </div>
+</form>
+</body>
+</html>

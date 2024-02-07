@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/lawyerCaseOngoing.css">
+    <title>Lawyer Details and Document Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 50px;
+            background-color: #fff;
+            padding: 100px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        #clientDetails, #documentRequestingForm {
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        hr {
+            border: 1px solid #ddd;
+        }
+        /* Responsive design */
+        @media screen and (max-width: 600px) {
+            form {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header> 
+
+		<div class="logosec">
+            <img src="/icons/pics.png" alt="Your Logo" class="logo-img">
+			<img src="/icons/menu.png" class="icn menuicn" id="menuicn" alt="menu-icon"> 
+		</div> 
+
+		<div class="searchbar"> 
+			<input type="text" placeholder="Search"> 
+			<div class="searchbtn"> 
+			<img src="/icons/search.png" class="icn srchicn" alt="search-icon"> 
+			</div> 
+		</div> 
+
+		<div class="message"> 
+			<div class="circle"></div> 
+			<img src="/icons/notification.png" class="icn" alt=""> 
+			<div class="dp"> 
+
+			<img src="/icons/profile.png" class="dpicn" alt="dp"> 
+			</div> 
+		</div> 
+
+	</header>
+
+<div class="container">
+
+    <h1>Client Details</h1>
+    <p>View details of your client and request necessary documents.</p>
+
+    <div id="clientDetails">
+        <h2>Your Client</h2>
+        <p><strong>Name:</strong><%= client.name %></p>
+        <p><strong>Case:</strong><%= caseInfo.caseDescription %></p>
+        <p><strong>Contact:</strong><%= client.email %></p>
+    </div>
+
+    <hr>
+
+    <form action="/ecourt/ldashboard/ongoing/<%= caseInfo._id %>/<%= lawyerId %>" method="post">
+        <h2>Document Requesting Form</h2>
+        
+        <label for="documentDescription">Document Description:</label>
+        <textarea id="documentDescription" name="documentDescription" rows="4" required></textarea>
+
+        
+
+        <button type="submit">Request Document</button>
+    </form>
+
+</div>
+
+</body>
+</html>
