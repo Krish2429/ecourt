@@ -66,6 +66,14 @@ header {
 .icn {
   height: 30px;
 }
+.message a{
+  text-decoration: none;
+}
+.logout{
+  text-decoration: none;
+  font-weight:200;
+  font-size: 1.25rem;
+}
 
 .menuicn {
   cursor: pointer;

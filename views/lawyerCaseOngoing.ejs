@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/lawyerCaseOngoing.css">
     <title>Lawyer Details and Document Submission</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -109,6 +110,41 @@
     </div>
 
     <hr>
+
+    <div class="container px-4">
+        <div class="row gx-5">
+            <% if (caseInfo.relatedDocuments && caseInfo.relatedDocuments.length > 0) { %>
+                <div class="col-12">
+                    <h2>Related Documents: </h2><br>
+                </div>
+                <% caseInfo.relatedDocuments.forEach((document, documentIndex) => { %>
+                    <% if (document.data) { %>
+                        <div class="col-12 mb-3">
+                            <div class="border bg-light">
+                                <!-- Display the document description -->
+                                <p><%= document.description %></p>
+                                <% if (document.contentType === 'application/pdf') { %>
+                                    <!-- Display the PDF document directly -->
+                                    <embed src="/ecourt/ccaseinfo/<%= client._id %>/<%= caseInfo._id %>/<%= document.description %>/view" type="application/pdf" width="100%" height="600px">
+                                <% } else { %>
+                                    <!-- Display the image directly -->
+                                    <img src="/ecourt/ccaseinfo/<%= client._id %>/<%= caseInfo._id %>/<%= document.description %>/view" alt="Document Image" height="250px" width="250px">
+                                <% } %>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                <% }); %>
+            <% } else { %>
+                <div class="col-12">
+                    <p>No related documents found.</p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    
+    
+    
 
     <form action="/ecourt/ldashboard/ongoing/<%= caseInfo._id %>/<%= lawyerId %>" method="post">
         <h2>Document Requesting Form</h2>

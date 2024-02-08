@@ -22,16 +22,10 @@
 		</div> 
 		<nav class="additional-nav">
       <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Clients</a></li>
-          <li><a href="#">Cases</a></li>
 		  <div class="message"> 
 			<div class="circle"></div> 
 			<img src= "/icons/notification.png" class="icn" alt=""> 
-			<div class="dp"> 
-
-			<img src= "/icons/profile.png" class="dpicn" alt="dp"> 
-			</div> 
+			<a href="/" class="logout">LOG-OUT</a> 
 		</div> 
           
       </ul>
@@ -49,7 +43,7 @@
 				</p>
 				<div class="fields">
           <div class="advocateImage">
-            <img src="/advocate.jpg" height="9rem" alt="advocate image">
+            <img src="/image/<%= lawyer._id %>" width="150px" alt="advocate image">
           </div>
       
           <div class="content1" style="display: flex; flex-direction: column;">
@@ -61,8 +55,8 @@
 			<p style="margin: 0;"><strong>City:</strong> &nbsp;&nbsp;<%= lawyer.city %></p>
 			<p style="margin: 0;"><strong>Date:</strong> &nbsp;&nbsp;<%= lawyer.practiceAreas %></p>
 			<p style="margin: 0;"><strong>PracticeAreas:</strong> &nbsp;&nbsp;<%= lawyer.experience %></p>
-			<p style="margin: 0;"><strong>Experience:</strong> &nbsp;&nbsp;<%= lawyer.gender %></p>
-			<p style="margin: 0;"><strong>Gender:</strong> &nbsp;&nbsp;<%= lawyer.address %></p>
+			<p style="margin: 0;"><strong>Experience:</strong> &nbsp;&nbsp;<%= lawyer.address %></p>
+			<p style="margin: 0;"><strong>Gender:</strong> &nbsp;&nbsp;<%= lawyer.gender %></p>
 		</div>
 		
 		
@@ -72,72 +66,19 @@
 		<div class="lawyers">
 			 <div class="intro">
 				<div class="heading">
-					<p>Top Lawyers, Advocates, Attorneys &amp; Legal Advisors in India</p>
-				</div>
+					<p>WELCOME <%= lawyer.name %></p>
+				</div>	
 				<div class="description">
 					<p>
-						We help you to consult and hire the best lawyers in India for District Courts, High Court & Supreme Court matters. Use filters to narrow your search and find the best advocate in India for your legal matter. Get top lawyers in India for family dispute or divorce matters, property matter, employment or labor court matter, criminal matter, recovery or cheque bounce matters, taxation or corporate matters, or a lawyer expert in any other field of law.
+						We offer a suite of features tailored to empower lawyers in managing their profiles and efficiently handling their caseload. With our intuitive platform, lawyers can effortlessly manage their profiles, ensuring accurate representation of their expertise and experience. Additionally, our case tracking system enables lawyers to stay organized by monitoring the progress of ongoing cases and ensuring timely updates. Moreover, our platform allows lawyers to seamlessly accept or decline requested cases, providing them with the flexibility to prioritize their workload and focus on cases aligning with their expertise and availability. Furthermore, our secure document storage feature enables lawyers to safely store and access essential documents related to their cases. With these robust features, our website empowers lawyers to enhance their productivity, streamline their workflow, and deliver exceptional legal services to their clients.
 					</p>
 				</div>
 			</div>
 
-			<br><br>
-			<!-- Sample data -->
-			<!-- <p style="font-size: 30px;">Ongoing Cases</p>
-			<br>
-
-			<table id="case-table">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Description of Case</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr onclick="window.location.href='ecourt/lawyer/:clientId';">
-						<td>John Doe</td>
-						<td>john@example.com</td>
-						<td>Business dispute regarding contract breach.</td>
-					</tr>
-					<tr onclick="window.location.href='ecourt/lawyer/:clientId';">
-						<td>Jane Smith</td>
-						<td>jane@example.com</td>
-						<td>Personal injury case due to a car accident.</td>
-					</tr>
-					 More sample ongoing cases can be added here -->
-				<!-- </tbody>
-			</table>
-
-			<br><br>
-			<p style="font-size: 30px;">Requested Cases(Sample data)</p>
-			<br>
-
-			<table id="case-table">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Description of Case</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr onclick="window.location.href='ecourt/lawyer/:clientId';">
-						<td>Client A</td>
-						<td>clientA@example.com</td>
-						<td>Seeking legal advice for a property dispute.</td>
-					</tr>
-					<tr onclick="window.location.href='ecourt/lawyer/:clientId';">
-						<td>Client B</td>
-						<td>clientB@example.com</td>
-						<td>Looking for representation in a divorce case.</td>
-					</tr>
-					More sample requested cases can be added here
-				</tbody>
-			</table>  -->
+			
 
 
-			<br><br><br>
+			<br><br><br><br><br>
 			<p style="font-size: 30px;">Ongoing Cases</p>
 			<br>
 
@@ -189,7 +130,7 @@
 					</tbody>
 				</table>
 			<% } else { %>
-				<p>No requested cases found.</p>
+				<p>No requested cases found.</p><br><br><br><br>
 			<% } %>	
 
 

@@ -97,26 +97,7 @@ router.post('/ecourt/regLawyer', upload.single('lImg'), async (req, res) => {
     res.sendFile(__dirname + "/failure.html");
   }
 });
-router.get('/image/:id', async (req, res) => {
-  const lawyerId = req.params.id;
 
-  try {
-      const lawyer = await Lawyer.findById(lawyerId);
-      // console.log(lawyer);
-      if (!lawyer) {
-          return res.status(404).send("lawyer not found");
-      }
-
-      // Set response content type based on the image content type
-      res.contentType(lawyer.img.contentType);
-
-      // Send the image data as the response
-      res.send(lawyer.img.data);
-  } catch (err) {
-      console.error("Error retrieving image:", err);
-      res.status(500).send("Internal Server Error");
-  }
-});
 
 
 
@@ -166,6 +147,26 @@ router.get('/ecourt/ldashboard/:id', async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+router.get('/image/:id', async (req, res) => {
+  const lawyerId = req.params.id;
+
+  try {
+      const lawyer = await Lawyer.findById(lawyerId);
+      // console.log(lawyer);
+      if (!lawyer) {
+          return res.status(404).send("lawyer not found");
+      }
+
+      // Set response content type based on the image content type
+      res.contentType(lawyer.img.contentType);
+
+      // Send the image data as the response
+      res.send(lawyer.img.data);
+  } catch (err) {
+      console.error("Error retrieving image:", err);
+      res.status(500).send("Internal Server Error");
+  }
+});
 
 
 
@@ -179,7 +180,7 @@ router.get("/ecourt/ldashboard/ongoing/:caseId/:lawyerId", async (req, res) => {
     return res.status(400).json({ msg: "Invalid caseId" });
   }
   try {
-    const caseInfo = await Case.findById(caseId);
+    const caseInfo = await Case.findById(caseId).populate('relatedDocuments');
     if (!caseInfo) {
       return res.status(404).json({ msg: "Case not found" });
     }

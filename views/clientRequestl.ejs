@@ -47,7 +47,7 @@
 	</header> 
     <form action="/ecourt/send-request/<%= client._id %>/<%= lawyer._id %>" method="post">
     <div class="lawyerprofile">
-        <img id="lawyer-img" src="/advocate.jpg" alt="Lawyer Image">
+        <img src="/image/<%= lawyer._id %>" width="150px" alt="advocate image">
         <div class="profile-details">
             <div id="name"><b>Name: </b><%= lawyer.name %></div>
             <div id="email"><b>Email: </b><%= lawyer.email %></div>
