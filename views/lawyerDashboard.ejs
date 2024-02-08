@@ -138,5 +138,16 @@
 		</div> 
 	</div>
 	<script src="./public/home.js"></script> 
+<script> 
+
+          window.history.pushState(null, null, window.location.href);
+          window.onpopstate = function () {
+              window.history.go(1);
+          };
+                    
+          
+          
+          
+          </script>
 </body> 
 </html>
