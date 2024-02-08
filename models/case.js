@@ -14,7 +14,6 @@ const caseSchema = new mongoose.Schema({
         contentType: String,
         description: {
             type: String,
-            // default: ""
         }
     }],
     caseDescription: {

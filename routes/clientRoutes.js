@@ -184,7 +184,7 @@ router.post("/ecourt/ccase/:clientId", async(req, res) => {
 router.get("/ecourt/ccaseinfo/:clientId", async (req, res) => {
   try {
     const clientId = req.params.clientId;
-    // Fetch the client details by email
+    // Fetch the client details by Id
     const client = await Client.findById(clientId).populate({
       path: 'cases',
       populate: {

@@ -34,8 +34,9 @@
 			<div class="circle"></div> 
 			<img src= "/icons/notification.png" class="icn" alt=""> 
 			<div class="dp"> 
-
-			<img src= "/icons/profile.png" class="dpicn" alt="dp"> 
+				<a href="/ecourt/ccaseinfo/<%= client._id %>">
+					<img src= "/icons/profile.png" class="dpicn" alt="dp"> 
+				</a>
 			</div> 
 		</div> 
 
@@ -80,11 +81,13 @@
 						<img src= "/icons/settings.png" class="nav-img" alt="settings"> 
 						<h3> Settings</h3> 
 					</div> 
+					
+					<a href="/"  class="nav-option logout">
+							<img src= "/icons/logout.png" class="nav-img" alt="logout"> 
 
-					<div class="nav-option logout"> 
-						<img src= "/icons/logout.png" class="nav-img" alt="logout"> 
 						<h3>Logout</h3> 
-					</div> 
+					</a>
+
 
 				</div> 
 			</nav> 
@@ -102,10 +105,13 @@
 			</div> 
 
 			<div class="banner">
-				<h1>Free Legal Advice Online From Top Rated Lawyers</h1>
-				<p>Choose from over 10,000 lawyers across 700+ cities in India</p>
+				<h1>Legal Advice Online From Top Rated Lawyers</h1>
+				<!-- <p>Choose from over 10,000 lawyers across 700+ cities in India</p> -->
+				<p>Choose lawyers from diverse cities to meet your legal needs</p>
 				<div class="buttons">
-					<button class="talk-to-lawyer"><h4>TALK TO A LAWYER</h4></button>
+					<a href="/ecourt/findalawyer/<%= client._id %>">
+						<button class="talk-to-lawyer"><h4>TALK TO A LAWYER</h4></button>
+					</a>
 					<button class="ask-question">ASK A FREE QUESTION</button>
 				</div>
 			</div><br><br><br>
